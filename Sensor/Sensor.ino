@@ -50,14 +50,17 @@ void loop() {
   
  if (distanceCm > 40) {
     Serial.println("Groter dan 40 cm ");
-    digitalWrite(LED_BUILTIN, HIGH); 
-    delay(1000);}
-  
+    digitalWrite(LED_BUILTIN, HIGH);
+    delay(1000);
+    }
     else {
       Serial.println("Kleiner dan 40 cm ");
+      delay(5000);
       digitalWrite(LED_BUILTIN, LOW); 
-      delay(1000);
+      
     }
+
+
   
 
   
