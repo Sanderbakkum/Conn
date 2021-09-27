@@ -24,10 +24,13 @@ void setup() {
   Serial.begin(115200); // Starts the serial communication
   pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
   pinMode(echoPin, INPUT); // Sets the echoPin as an Input
+  pinMode(LED_BUILTIN, OUTPUT);
+  
 }
 
 void loop() {
   // Clears the trigPin
+  // SB
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
   // Sets the trigPin on HIGH state for 10 micro seconds
@@ -40,14 +43,24 @@ void loop() {
 
   // Calculate the distance
   distanceCm = duration * SOUND_VELOCITY/2;
- 
-
-  if (distanceCm <= 40) {
-
-    Serial.println("Groter dan 40");
-  }
   
-  delay(500);
-}
 
+
+  // Convert to inches
+  
+ if (distanceCm > 40) {
+    Serial.println("Groter dan 40 cm ");
+    digitalWrite(LED_BUILTIN, HIGH); 
+    delay(1000);}
+  
+    else {
+      Serial.println("Kleiner dan 40 cm ");
+      digitalWrite(LED_BUILTIN, LOW); 
+      delay(1000);
+    }
+  
+
+  
  
+  
+}
